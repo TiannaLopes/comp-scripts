@@ -1,0 +1,17 @@
+import os
+
+def find_sims_files(starting_directory='/'):
+    matches = []
+    for root, dirnames, filenames in os.walk(starting_directory):
+        for dirname in dirnames:
+            if 'Sims' in dirname:
+                matches.append(os.path.join(root, dirname))
+        for filename in filenames:
+            if 'Sims' in filename:
+                matches.append(os.path.join(root, filename))
+    return matches
+
+if __name__ == "__main__":
+    sims_files = find_sims_files()
+    for file in sims_files:
+        print(file)
